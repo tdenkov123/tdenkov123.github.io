@@ -9,7 +9,7 @@
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = theme === "light" ? "#f3eee4" : "#14110e";
+    if (meta) meta.content = theme === "light" ? "#eef2ec" : "#131512";
   };
 
   applyTheme(localStorage.getItem(storageKey) || systemTheme());
