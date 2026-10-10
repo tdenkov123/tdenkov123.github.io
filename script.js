@@ -3,13 +3,13 @@
   const storageKey = "resume-theme";
 
   const systemTheme = () =>
-    window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    "light";
 
   const applyTheme = (theme) => {
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = theme === "light" ? "#eef2ec" : "#131512";
+    if (meta) meta.content = theme === "light" ? "#f4f7ff" : "#0b1226";
   };
 
   applyTheme(localStorage.getItem(storageKey) || systemTheme());

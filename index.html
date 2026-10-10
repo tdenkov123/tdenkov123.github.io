@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Барденков Тимофей — Middle Go Backend разработчик</title>
-  <meta name="description" content="Backend-разработчик на Go, Python и C/C++. Разрабатываю backend-сервисы, REST API, gRPC и инфраструктуру поставки. Санкт-Петербург / Москва. Офис, гибрид, удалённо.">
+  <meta name="description" content="Middle Go Backend разработчик на Go, Python и C/C++. Разрабатываю backend-сервисы, REST API, gRPC и инфраструктуру поставки. Санкт-Петербург. Офис, гибрид, удалённо.">
   <meta name="author" content="Барденков Тимофей">
-  <meta name="theme-color" content="#131512">
+  <meta name="theme-color" content="#0b1226">
   <link rel="canonical" href="https://tdenkov123.github.io/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 
@@ -28,7 +28,7 @@
     (function () {
       var key = "resume-theme";
       var stored = localStorage.getItem(key);
-      var theme = stored || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+      var theme = stored || "light";
       document.documentElement.dataset.theme = theme;
       document.documentElement.style.colorScheme = theme;
     })();
@@ -95,11 +95,11 @@
     <section class="hero" id="top">
       <p class="status-line">
         <span class="led" aria-hidden="true"></span>
-        STATUS: OPEN TO WORK · SPB / MSK · OFFICE / HYBRID / REMOTE
+        STATUS: OPEN TO WORK · SPB · OFFICE / HYBRID / REMOTE
       </p>
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="kicker">Go Backend</p>
+          <p class="kicker">Middle Go Backend</p>
           <h1>
             <span class="name-line">Барденков</span>
             <span class="name-line accent-name">Тимофей</span>
@@ -110,7 +110,8 @@
             ранее — компоненты промышленных IIoT-систем. Работал над полным
             циклом разработки: от уточнения требований и проектирования API до
             тестирования, развёртывания и сопровождения. Основное направление —
-            Go backend.
+            Go backend. В собственном проекте GArchive использую gRPC, PostgreSQL,
+            Redis, Kafka и S3-совместимое хранилище.
           </p>
           <div class="hero-cta">
             <a class="btn btn-solid" href="mailto:tdenkov123@mail.ru">tdenkov123@mail.ru</a>
@@ -122,11 +123,11 @@
           <dl>
             <div>
               <dt>Роль</dt>
-              <dd>Go / Golang backend</dd>
+              <dd>Middle Go backend</dd>
             </div>
             <div>
               <dt>Локация</dt>
-              <dd>Санкт-Петербург, Москва</dd>
+              <dd>Санкт-Петербург, Россия</dd>
             </div>
             <div>
               <dt>Формат</dt>
@@ -169,7 +170,7 @@
         <p class="about-strengths">
           Есть опыт настройки CI/CD, мониторинга и автоматизации поставки сервисов.
           Сильные стороны: Go backend, PostgreSQL, Redis, Kafka,
-          Docker/Kubernetes, Prometheus/Grafana, Vault и интеграция backend
+          Docker / Kubernetes, Prometheus / Grafana, Vault и интеграция backend
           с устройствами и внешними API.
         </p>
       </div>
@@ -359,6 +360,6 @@
     </div>
   </footer>
 
-  <script src="./script.js" defer></script>
+  <script src="./script.js?v=2" defer></script>
 </body>
 </html>

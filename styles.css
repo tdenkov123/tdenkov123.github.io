@@ -1,36 +1,60 @@
 :root {
-  --bg: #131512;
-  --bg-elev: #1a1d1a;
-  --bg-soft: #222622;
-  --ink: #e8eee9;
-  --muted: #8b958e;
-  --line: #323833;
-  --accent: #3cb8a8;
-  --accent-ink: #06211d;
-  --go: #5fd0c3;
-  --header: rgba(19, 21, 18, 0.88);
-  --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  --ref-night: oklch(19% 0.045 260);
+  --ref-navy: oklch(25% 0.07 260);
+  --ref-sky: oklch(86% 0.13 185);
+  --ref-coral: oklch(76% 0.16 42);
+  --ref-white: oklch(98% 0.015 245);
+  --surface-page: var(--ref-night);
+  --surface-card: var(--ref-navy);
+  --surface-subtle: oklch(31% 0.08 260);
+  --text-primary: var(--ref-white);
+  --text-secondary: oklch(80% 0.045 255);
+  --border-subtle: color-mix(in oklab, var(--ref-sky) 18%, transparent);
+  --accent-primary: var(--ref-sky);
+  --accent-secondary: var(--ref-coral);
+  --accent-on-primary: oklch(22% 0.045 250);
+  --status-positive: oklch(88% 0.12 165);
+  --header-surface: color-mix(in oklab, var(--surface-page) 80%, transparent);
+  --shadow-card: 0 20px 50px color-mix(in oklab, var(--ref-navy) 75%, transparent);
+  --bg: var(--surface-page);
+  --bg-elev: var(--surface-card);
+  --bg-soft: var(--surface-subtle);
+  --ink: var(--text-primary);
+  --muted: var(--text-secondary);
+  --line: var(--border-subtle);
+  --accent: var(--accent-primary);
+  --accent-2: var(--accent-secondary);
+  --accent-ink: var(--accent-on-primary);
+  --go: var(--status-positive);
+  --header: var(--header-surface);
+  --shadow: var(--shadow-card);
   --font-display: "Unbounded", sans-serif;
   --font-body: "Golos Text", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --pad: clamp(1.1rem, 3vw, 2.4rem);
   --max: 1120px;
   --stripe: 10px;
-  --radius: 14px;
+  --radius: 28px;
 }
 
 [data-theme="light"] {
-  --bg: #eef2ec;
-  --bg-elev: #f7faf6;
-  --bg-soft: #e2eae4;
-  --ink: #17201c;
-  --muted: #5a6862;
-  --line: #c5d0c8;
-  --accent: #1b756c;
-  --accent-ink: #f3fbf9;
-  --go: #1b756c;
-  --header: rgba(238, 242, 236, 0.9);
-  --shadow: 0 16px 32px rgba(18, 40, 32, 0.08);
+  --ref-paper: oklch(98% 0.012 250);
+  --ref-blue: oklch(55% 0.19 260);
+  --ref-blue-soft: oklch(95% 0.035 255);
+  --ref-ink: oklch(25% 0.045 260);
+  --ref-slate: oklch(49% 0.055 260);
+  --surface-page: var(--ref-paper);
+  --surface-card: oklch(100% 0 0);
+  --surface-subtle: var(--ref-blue-soft);
+  --text-primary: var(--ref-ink);
+  --text-secondary: var(--ref-slate);
+  --border-subtle: color-mix(in oklab, var(--ref-blue) 18%, transparent);
+  --accent-primary: var(--ref-blue);
+  --accent-secondary: oklch(70% 0.17 42);
+  --accent-on-primary: oklch(99% 0.01 250);
+  --status-positive: oklch(56% 0.17 250);
+  --header-surface: color-mix(in oklab, var(--surface-page) 82%, transparent);
+  --shadow-card: 0 18px 40px color-mix(in oklab, var(--ref-blue) 18%, transparent);
 }
 
 *,
@@ -51,9 +75,7 @@ body {
 
 body {
   color: var(--ink);
-  background:
-    radial-gradient(1200px 500px at 80% -10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 55%),
-    var(--bg);
+  background: var(--bg);
   font-family: var(--font-body);
   font-size: 1.05rem;
   line-height: 1.65;
@@ -96,17 +118,8 @@ a {
   inset: 0 auto 0 0;
   width: var(--stripe);
   z-index: 80;
-  background-color: color-mix(in srgb, var(--accent) 16%, var(--bg));
-  background-image:
-    linear-gradient(var(--accent), var(--accent)),
-    repeating-linear-gradient(
-      to bottom,
-      var(--accent) 0 2px,
-      transparent 2px 16px
-    );
-  background-size: 3px 100%, 100% 16px;
-  background-repeat: no-repeat, repeat;
-  background-position: left top, left top;
+  background: var(--accent);
+  border-radius: 0 16px 16px 0;
 }
 
 .grain {
@@ -123,7 +136,7 @@ a {
   top: 0;
   z-index: 60;
   backdrop-filter: blur(16px);
-  background: var(--header);
+  background: color-mix(in srgb, var(--header) 88%, transparent);
   border-bottom: 1px solid var(--line);
 }
 
@@ -190,39 +203,48 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.5rem;
-  padding: 0.4rem 0.9rem;
+  min-height: 2.8rem;
+  padding: 0.52rem 1.1rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   text-decoration: none;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+.theme-toggle:hover {
+  transform: translateY(-1px);
 }
 
 .btn-solid {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--accent-ink);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.btn-solid:hover {
-  filter: brightness(1.06);
+.btn-ghost {
+  background: color-mix(in oklab, var(--bg-elev) 78%, transparent);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
 }
 
 .btn-ghost:hover {
-  border-color: var(--ink);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
 .theme-toggle {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.6rem;
+  height: 2.6rem;
   border: 1px solid var(--line);
   border-radius: 50%;
-  background: transparent;
+  background: var(--bg-soft);
   color: var(--ink);
   cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
 }
 
 .theme-toggle-icon {
@@ -321,6 +343,7 @@ h1 {
   padding: 1.15rem 1.2rem 0.4rem;
   border: 1px solid var(--line);
   background: var(--bg-elev);
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
@@ -424,6 +447,7 @@ h2 {
 .project,
 .edu {
   padding: 1.15rem 1.2rem 1.25rem;
+  border-radius: var(--radius);
 }
 
 .skill-group h3,
@@ -448,6 +472,7 @@ h2 {
 .skill-group li {
   padding: 0.28rem 0.55rem;
   border: 1px solid var(--line);
+  border-radius: 999px;
   background: var(--bg-soft);
   font-family: var(--font-mono);
   font-size: 0.74rem;
@@ -456,6 +481,7 @@ h2 {
 .job {
   margin-bottom: 1.1rem;
   padding: 1.35rem 1.3rem 1.2rem;
+  border-radius: var(--radius);
 }
 
 .job-head {
